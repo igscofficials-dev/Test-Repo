@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGSC Courses</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter;}
+body{background:#f8fafc;color:#1e293b;}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:white;text-align:center;padding:80px 20px;
+}
+.hero h1{font-size:42px;}
+.hero p{opacity:.8;margin-top:10px;}
+
+/* FILTER */
+.filter-bar{
+  max-width:1100px;margin:-30px auto 20px;
+  display:flex;gap:10px;padding:0 20px;
+}
+.filter-bar select{
+  flex:1;padding:12px;border-radius:8px;border:1px solid #ddd;
+}
+
+/* COURSES */
+.courses{
+  max-width:1100px;margin:auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;padding:20px;
+}
+
+.card{
+  background:white;border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  transition:.3s;
+}
+.card:hover{transform:translateY(-6px);}
+
+.card img{width:100%;height:170px;object-fit:cover;}
+
+.content{padding:18px;}
+
+.category{font-size:12px;color:#2563eb;font-weight:600;}
+.title{font-size:18px;margin:5px 0;}
+.desc{font-size:14px;color:#555;}
+
+.status{
+  display:inline-block;
+  padding:4px 10px;border-radius:20px;
+  font-size:12px;margin-top:8px;
+}
+.upcoming{background:#fef3c7;color:#92400e;}
+.ongoing{background:#dcfce7;color:#166534;}
+.closed{background:#fee2e2;color:#991b1b;}
+
+.meta{font-size:13px;margin-top:8px;color:#666;}
+.countdown{font-size:13px;color:#2563eb;font-weight:600;margin-top:5px;}
+
+.price{
+  margin-top:10px;
+  font-weight:600;
+  color:#059669;
+}
+
+button{
+  width:100%;
+  margin-top:12px;
+  padding:10px;
+  border:none;
+  background:#2563eb;
+  color:white;border-radius:8px;
+  cursor:pointer;
+}
+
+/* WHY BEST */
+.why{
+  max-width:1100px;margin:60px auto;padding:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.why div{
+  background:white;padding:20px;border-radius:12px;text-align:center;
+}
+
+/* REVIEWS */
+.reviews{
+  max-width:1100px;margin:60px auto;padding:20px;
+}
+.review-header{
+  display:flex;justify-content:space-between;align-items:center;
+}
+.review-grid{
+  margin-top:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.review-card{
+  background:white;padding:20px;border-radius:12px;
+}
+.review-top{
+  display:flex;align-items:center;gap:10px;margin-bottom:10px;
+}
+.review-top img{
+  width:40px;height:40px;border-radius:50%;
+}
+.stars{color:#f59e0b;font-size:14px;}
+.review-date{font-size:12px;color:#888;}
+
+/* FAQ */
+.faq{
+  max-width:900px;margin:50px auto;padding:20px;
+}
+.faq-item{
+  background:white;margin-bottom:10px;border-radius:10px;
+  overflow:hidden;
+}
+.faq-question{
+  padding:15px;cursor:pointer;font-weight:600;
+}
+.faq-answer{
+  padding:0 15px;height:0;overflow:hidden;
+  transition:.3s;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+  display:none;justify-content:center;align-items:center;
+}
+.modal-content{
+  background:white;padding:25px;border-radius:12px;
+  width:90%;max-width:450px;
+}
+input,textarea{
+  width:100%;padding:10px;margin-top:10px;
+  border:1px solid #ddd;border-radius:8px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .courses,.review-grid,.why{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .courses,.review-grid,.why{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Upgrade Your Skills with IGSC</h1>
+  <p>Professional training programs designed for real-world success</p>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <select onchange="filterCourse(this.value)">
+    <option value="all">All Courses</option>
+    <option value="development">Development</option>
+    <option value="business">Business</option>
+    <option value="language">Language</option>
+  </select>
+</div>
+
+<!-- COURSES -->
+<div class="courses" id="courseList"></div>
+
+<!-- WHY BEST -->
+<div class="why">
+  <div>
+    <h3>Industry Focused</h3>
+    <p>Courses designed based on job market demand</p>
+  </div>
+  <div>
+    <h3>Expert Trainers</h3>
+    <p>Learn from experienced professionals</p>
+  </div>
+  <div>
+    <h3>Career Support</h3>
+    <p>Guidance for jobs, freelancing & internships</p>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <div class="review-header">
+    <h2>Student Reviews</h2>
+    <span>⭐ 4.8 (320 Reviews)</span>
+  </div>
+
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        <div>
+          <strong>Rahim Uddin</strong>
+          <div class="stars">★★★★★</div>
+          <div class="review-date">March 2026</div>
+        </div>
+      </div>
+      <p>This course helped me get my first job in IT. Highly recommended!</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+        <div>
+          <strong>Ayesha Khan</strong>
+          <div class="stars">★★★★☆</div>
+          <div class="review-date">February 2026</div>
+        </div>
+      </div>
+      <p>Great instructors and practical lessons. Very useful skills.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-top">
+        <img src="https://randomuser.me/api/portraits/men/65.jpg">
+        <div>
+          <strong>Karim Ahmed</strong>
+          <div class="stars">★★★★★</div>
+          <div class="review-date">January 2026</div>
+        </div>
+      </div>
+      <p>Excellent support and career guidance after the course.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <h2>Frequently Asked Questions</h2>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">How can I apply?</div>
+    <div class="faq-answer">Click "Apply" and visit our institute for admission.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">Is payment online?</div>
+    <div class="faq-answer">No, payment is completed physically at our center.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question" onclick="toggleFaq(this)">Will I get a certificate?</div>
+    <div class="faq-answer">Yes, you will receive a certificate after course completion.</div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <h3>Apply for Admission</h3>
+    <input placeholder="Full Name">
+    <input placeholder="Phone">
+    <input placeholder="Age">
+    <textarea placeholder="Your goal..."></textarea>
+    <button>Submit</button>
+  </div>
+</div>
+
+<script>
+let current="all";
+
+const courses=[
+{title:"English Speaking",cat:"language",date:"2026-05-10",status:"upcoming",img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644",price:"৳3000"},
+{title:"Full Stack Development",cat:"development",date:"2026-05-15",status:"upcoming",img:"https://images.unsplash.com/photo-1518770660439-4636190af475",price:"৳8000"},
+{title:"Digital Marketing",cat:"business",date:"2026-04-01",status:"ongoing",img:"https://images.unsplash.com/photo-1460925895917-afdab827c52f",price:"৳5000"},
+{title:"Graphic Design",cat:"development",date:"2026-03-01",status:"closed",img:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f",price:"৳4000"},
+{title:"Freelancing",cat:"business",date:"2026-05-20",status:"upcoming",img:"https://images.unsplash.com/photo-1556740749-887f6717d7e4",price:"৳3500"},
+{title:"Basic IT",cat:"development",date:"2026-04-10",status:"ongoing",img:"https://images.unsplash.com/photo-1519389950473-47ba0277781c",price:"৳2500"}
+];
+
+function filterCourse(cat){
+  current=cat;
+  render();
+}
+
+function render(){
+  const el=document.getElementById("courseList");
+  el.innerHTML="";
+
+  courses.forEach((c,i)=>{
+    if(current!=="all" && c.cat!==current) return;
+
+    const div=document.createElement("div");
+    div.className="card";
+
+    div.innerHTML=`
+      <img src="${c.img}">
+      <div class="content">
+        <div class="category">${c.cat}</div>
+        <div class="title">${c.title}</div>
+        <div class="desc">Skill-based professional course</div>
+        <span class="status ${c.status}">${c.status}</span>
+        <div class="meta">📅 ${c.date}</div>
+        <div class="countdown" id="t${i}"></div>
+        <div class="price">${c.price}</div>
+        <button onclick="openModal()">Apply</button>
+      </div>
+    `;
+
+    el.appendChild(div);
+    timer(`t${i}`,c.date);
+  });
+}
+
+function timer(id,date){
+  const el=document.getElementById(id);
+  const target=new Date(date).getTime();
+
+  function update(){
+    const now=new Date().getTime();
+    const diff=target-now;
+    if(diff<=0){el.innerHTML="Started";return;}
+    const d=Math.floor(diff/(1000*60*60*24));
+    const h=Math.floor((diff/(1000*60*60))%24);
+    el.innerHTML=`⏳ ${d}d ${h}h left`;
+  }
+
+  update();
+  setInterval(update,1000);
+}
+
+function openModal(){
+  document.getElementById("modal").style.display="flex";
+}
+
+function toggleFaq(el){
+  const ans=el.nextElementSibling;
+  ans.style.height=ans.style.height?"":"60px";
+}
+
+render();
+</script>
+
+</body>
+</html>

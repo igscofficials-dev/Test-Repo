@@ -1,11 +1,1217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGSC — Institute of Global Skills and Communication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0A1628;
+  --navy-2:#0F2040;
+  --navy-3:#1A3560;
+  --blue:#1847C4;
+  --blue-2:#2155E0;
+  --blue-pale:#EEF3FF;
+  --blue-mid:#C7D7FA;
+  --green:#0B7B5A;
+  --green-2:#0E9470;
+  --green-pale:#E8F7F2;
+  --green-mid:#A3DFD0;
+  --amber:#C47A0A;
+  --amber-pale:#FEF5E4;
+  --white:#FFFFFF;
+  --gray-50:#F8F9FB;
+  --gray-100:#F1F3F7;
+  --gray-200:#E4E8EF;
+  --gray-300:#CDD3DE;
+  --gray-400:#9AA3B2;
+  --gray-500:#6B7585;
+  --gray-600:#4A5162;
+  --gray-800:#1E2333;
+  --gray-900:#0D1117;
+  --r-sm:6px;
+  --r:10px;
+  --r-lg:14px;
+  --r-xl:20px;
+  --r-2xl:28px;
+  --r-pill:999px;
+  --s1:0 1px 2px rgba(10,22,40,.05);
+  --s2:0 2px 8px rgba(10,22,40,.07),0 1px 2px rgba(10,22,40,.05);
+  --s3:0 4px 16px rgba(10,22,40,.08),0 2px 4px rgba(10,22,40,.04);
+  --s4:0 8px 32px rgba(10,22,40,.10),0 4px 8px rgba(10,22,40,.06);
+  --s5:0 16px 56px rgba(10,22,40,.12),0 8px 16px rgba(10,22,40,.07);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Geist',system-ui,sans-serif;
+  color:var(--gray-800);
+  background:var(--white);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:1160px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3.5rem)}
+
+/* ─── EYEBROW ─── */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:.9rem;
+}
+.eyebrow::before{content:'';width:20px;height:1.5px;border-radius:2px;flex-shrink:0}
+.eyebrow-blue{color:var(--blue)}
+.eyebrow-blue::before{background:var(--blue)}
+.eyebrow-green{color:var(--green)}
+.eyebrow-green::before{background:var(--green)}
+.eyebrow-white{color:rgba(255,255,255,.65)}
+.eyebrow-white::before{background:rgba(255,255,255,.4)}
+
+/* ─── HEADINGS ─── */
+.h-display{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:clamp(2.6rem,5.5vw,4.2rem);
+  line-height:1.08;font-weight:400;letter-spacing:-.01em;
+}
+.h-section{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:clamp(1.9rem,3.2vw,2.7rem);
+  line-height:1.15;font-weight:400;
+}
+.h-card{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:1.3rem;line-height:1.25;font-weight:400;
+}
+em.serif{font-style:italic}
+.text-blue{color:var(--blue-2)}
+.text-green{color:var(--green-2)}
+.text-white{color:var(--white)}
+.text-muted{color:var(--gray-500)}
+.lead{font-size:clamp(15px,1.8vw,17px);color:var(--gray-500);line-height:1.8;max-width:520px}
+
+/* ─── BUTTONS ─── */
+.btn{
+  display:inline-flex;align-items:center;gap:7px;
+  font-family:'Geist',sans-serif;font-size:14px;font-weight:500;
+  padding:11px 22px;border-radius:var(--r-pill);
+  border:none;cursor:pointer;text-decoration:none;
+  transition:all .15s ease;white-space:nowrap;
+  letter-spacing:.01em;
+}
+.btn .ic{display:inline-block;transition:transform .15s}
+.btn:hover .ic{transform:translateX(3px)}
+.btn-navy{background:var(--navy);color:#fff;box-shadow:0 1px 3px rgba(10,22,40,.3)}
+.btn-navy:hover{background:var(--navy-2);box-shadow:var(--s3);transform:translateY(-1px)}
+.btn-blue{background:var(--blue);color:#fff;box-shadow:0 2px 8px rgba(24,71,196,.3)}
+.btn-blue:hover{background:var(--blue-2);box-shadow:0 4px 16px rgba(24,71,196,.4);transform:translateY(-1px)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 2px 8px rgba(11,123,90,.3)}
+.btn-green:hover{background:var(--green-2);box-shadow:0 4px 16px rgba(11,123,90,.4);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--gray-600);border:1.5px solid var(--gray-200)}
+.btn-outline:hover{border-color:var(--gray-400);background:var(--gray-50);color:var(--gray-800)}
+.btn-outline-white{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.22)}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4)}
+.btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}
+.btn-ghost:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.28)}
+.btn-sm{padding:8px 16px;font-size:13px}
+.btn-lg{padding:14px 28px;font-size:15px}
+
+/* ─── NAV ─── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--gray-200);
+  height:62px;display:flex;align-items:center;
+}
+.nav-inner{
+  width:100%;max-width:1160px;margin:0 auto;
+  padding:0 clamp(1.25rem,4vw,3.5rem);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:'Instrument Serif',serif;
+  font-size:20px;color:var(--navy);
+  text-decoration:none;display:flex;align-items:center;gap:10px;
+  letter-spacing:-.01em;
+}
+.logo-mark{
+  width:34px;height:34px;border-radius:9px;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;
+}
+.logo-mark svg{width:18px;height:18px}
+.nav-links{display:flex;align-items:center;gap:1.75rem}
+.nav-links a{
+  font-size:14px;color:var(--gray-500);text-decoration:none;
+  font-weight:400;transition:color .12s;letter-spacing:.01em;
+}
+.nav-links a:hover{color:var(--gray-800)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-mob{display:none;background:none;border:none;cursor:pointer;padding:4px}
+
+/* ─── HERO ─── */
+#hero{
+  background:var(--navy);
+  position:relative;overflow:hidden;
+  padding:clamp(5.5rem,10vw,9rem) clamp(1.25rem,4vw,3.5rem) clamp(4.5rem,8vw,7.5rem);
+}
+/* Grid lines */
+#hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-orb-1{
+  position:absolute;top:-140px;right:-100px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(24,71,196,.35) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-orb-2{
+  position:absolute;bottom:-120px;left:-80px;
+  width:450px;height:450px;border-radius:50%;
+  background:radial-gradient(circle,rgba(11,123,90,.22) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-inner{position:relative;max-width:1160px;margin:0 auto}
+.hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  border-radius:var(--r-pill);padding:5px 14px 5px 7px;
+  margin-bottom:2rem;
+}
+.hero-label-dot{
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-2),var(--blue));
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hero-label span{font-size:13px;color:rgba(255,255,255,.7);font-weight:400;letter-spacing:.01em}
+.hero-hed{
+  font-family:'Instrument Serif',Georgia,serif;
+  font-size:clamp(3rem,6.5vw,5rem);
+  line-height:1.06;font-weight:400;
+  color:#fff;max-width:800px;
+  margin-bottom:1.5rem;letter-spacing:-.02em;
+}
+.hero-hed em{font-style:italic;color:#93C5FD}
+.hero-lead{
+  font-size:clamp(15px,1.8vw,17px);
+  color:rgba(255,255,255,.55);
+  max-width:490px;line-height:1.8;margin-bottom:2.5rem;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:3.5rem}
+.hero-divider{
+  display:flex;align-items:center;gap:2rem;flex-wrap:wrap;
+  padding-top:2.25rem;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.hero-trust-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:rgba(255,255,255,.5);
+}
+.ht-icon{
+  width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:rgba(11,148,112,.25);border:1px solid rgba(11,148,112,.4);
+  display:flex;align-items:center;justify-content:center;
+}
+/* Stats bar */
+.hero-stats{
+  margin-top:3.75rem;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--r-xl);overflow:hidden;
+}
+.hstat{
+  padding:1.6rem 2rem;
+  border-right:1px solid rgba(255,255,255,.08);
+  transition:background .2s;
+}
+.hstat:last-child{border-right:none}
+.hstat:hover{background:rgba(255,255,255,.06)}
+.hstat-n{
+  font-family:'Instrument Serif',serif;
+  font-size:2.4rem;line-height:1;font-weight:400;margin-bottom:5px;
+}
+.hstat-l{font-size:13px;color:rgba(255,255,255,.45);line-height:1.45}
+.hstat:nth-child(1) .hstat-n{color:#93C5FD}
+.hstat:nth-child(2) .hstat-n{color:#6EE7B7}
+.hstat:nth-child(3) .hstat-n{color:#FDE68A}
+
+/* ─── TICKER ─── */
+.ticker{
+  padding:13px 0;
+  background:var(--gray-50);
+  border-bottom:1px solid var(--gray-200);
+  overflow:hidden;
+}
+.ticker-track{
+  display:flex;gap:2.5rem;align-items:center;
+  animation:ticker 28s linear infinite;width:max-content;
+}
+.ticker-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:500;color:var(--gray-400);
+  white-space:nowrap;letter-spacing:.03em;
+}
+.ticker-dot{width:3px;height:3px;border-radius:50%;background:var(--gray-300);flex-shrink:0}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SECTION BASE ─── */
+.section{padding:clamp(4.5rem,7.5vw,7rem) clamp(1.25rem,4vw,3.5rem)}
+.section-alt{background:var(--gray-50)}
+.section-dark{background:var(--navy);color:#fff}
+.section-head{margin-bottom:3rem}
+.section-head-row{
+  display:flex;justify-content:space-between;
+  align-items:flex-end;flex-wrap:wrap;gap:1.25rem;
+  margin-bottom:3rem;
+}
+
+/* ─── SERVICES ─── */
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1.25rem;margin-top:2.75rem;
+}
+.svc-card{
+  background:var(--white);
+  border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);
+  padding:2rem;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.svc-card::after{
+  content:'';position:absolute;
+  top:0;left:0;right:0;height:2px;
+  border-radius:var(--r-xl) var(--r-xl) 0 0;
+}
+.svc-blue::after{background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+.svc-green::after{background:linear-gradient(90deg,var(--green),var(--green-2))}
+.svc-amber::after{background:linear-gradient(90deg,var(--amber),#E89A14)}
+.svc-card:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--s4);
+  border-color:var(--gray-100);
+}
+.svc-icon{
+  width:46px;height:46px;border-radius:var(--r);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin-bottom:1.4rem;
+}
+.si-blue{background:var(--blue-pale)}
+.si-green{background:var(--green-pale)}
+.si-amber{background:var(--amber-pale)}
+.svc-tag{
+  position:absolute;top:1.4rem;right:1.4rem;
+  font-size:10px;font-weight:600;padding:3px 9px;
+  border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.08em;
+}
+.st-blue{background:var(--blue-pale);color:var(--blue)}
+.st-green{background:var(--green-pale);color:var(--green)}
+.st-amber{background:var(--amber-pale);color:var(--amber)}
+.svc-card h3{font-size:17px;font-weight:600;margin-bottom:.6rem;color:var(--gray-800);line-height:1.3}
+.svc-card p{font-size:14px;color:var(--gray-500);line-height:1.75}
+.svc-link{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:13px;font-weight:500;text-decoration:none;
+  margin-top:1.4rem;transition:gap .15s;
+}
+.sl-blue{color:var(--blue)}
+.sl-green{color:var(--green)}
+.sl-amber{color:var(--amber)}
+.svc-link:hover{gap:8px}
+
+/* ─── COURSES ─── */
+.courses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.crs-card{
+  background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);overflow:hidden;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.crs-card:hover{transform:translateY(-4px);box-shadow:var(--s4);border-color:transparent}
+.crs-thumb{
+  height:120px;display:flex;align-items:center;
+  justify-content:center;font-size:2.2rem;
+}
+.ct-1{background:linear-gradient(135deg,var(--blue-pale),var(--blue-mid))}
+.ct-2{background:linear-gradient(135deg,var(--green-pale),var(--green-mid))}
+.ct-3{background:linear-gradient(135deg,var(--amber-pale),#FAD98E)}
+.ct-4{background:linear-gradient(135deg,#FDF4FF,#EDD9FE)}
+.ct-5{background:linear-gradient(135deg,#F3F4FE,#C7CAFD)}
+.ct-6{background:linear-gradient(135deg,#F0FDF8,#A7F3D0)}
+.crs-body{padding:1.1rem 1.35rem 1.4rem}
+.crs-meta{display:flex;align-items:center;gap:7px;margin-bottom:9px;flex-wrap:wrap}
+.crs-badge{
+  font-size:10px;font-weight:600;padding:3px 8px;
+  border-radius:var(--r-pill);text-transform:uppercase;letter-spacing:.06em;
+}
+.cb-1{background:var(--blue-pale);color:var(--blue)}
+.cb-2{background:var(--green-pale);color:var(--green)}
+.cb-3{background:var(--amber-pale);color:var(--amber)}
+.cb-4{background:#FDF4FF;color:#7C3AED}
+.cb-5{background:#F3F4FE;color:#4F46E5}
+.cb-6{background:#F0FDF8;color:#065F46}
+.crs-dur{font-size:12px;color:var(--gray-400)}
+.crs-card h4{font-size:14px;font-weight:600;color:var(--gray-800);line-height:1.45;margin-bottom:4px}
+.crs-card p{font-size:13px;color:var(--gray-500);line-height:1.65}
+.crs-foot{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-top:1rem;padding-top:1rem;
+  border-top:1px solid var(--gray-100);
+}
+.crs-aud{font-size:12px;color:var(--gray-400)}
+.crs-apply{
+  font-size:12px;font-weight:600;color:var(--blue);
+  background:var(--blue-pale);border:none;
+  border-radius:var(--r-pill);padding:5px 12px;
+  cursor:pointer;transition:background .15s;text-decoration:none;
+}
+.crs-apply:hover{background:var(--blue-mid)}
+
+/* ─── CAMPAIGNS ─── */
+.camp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2.75rem}
+.camp-card{
+  border-radius:var(--r-xl);padding:2.25rem;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.camp-card:hover{transform:translateY(-3px);box-shadow:var(--s5)}
+.cc-1{background:#065F46;color:#fff}
+.cc-2{background:var(--navy);color:#fff}
+.cc-3{background:var(--gray-50);color:var(--gray-800);border:1px solid var(--gray-200)}
+.cc-4{background:#0D1117;color:#fff}
+.camp-card h3{
+  font-family:'Instrument Serif',serif;
+  font-size:1.45rem;line-height:1.2;font-weight:400;margin-bottom:.65rem;
+}
+.camp-eyebrow{
+  font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;margin-bottom:.7rem;
+}
+.cc-1 .camp-eyebrow,.cc-2 .camp-eyebrow,.cc-4 .camp-eyebrow{color:rgba(255,255,255,.5)}
+.cc-3 .camp-eyebrow{color:var(--gray-400)}
+.camp-card p{font-size:14px;line-height:1.75;max-width:340px}
+.cc-1 p,.cc-2 p,.cc-4 p{color:rgba(255,255,255,.6)}
+.cc-3 p{color:var(--gray-500)}
+.camp-icon{font-size:2.25rem;margin-bottom:.9rem;display:block}
+.camp-count{position:absolute;top:1.4rem;right:1.5rem;font-size:11px;opacity:.5}
+.camp-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'Geist',sans-serif;font-size:13px;font-weight:500;
+  text-decoration:none;margin-top:1.4rem;padding:8px 16px;
+  border-radius:var(--r-pill);transition:all .15s;border:none;cursor:pointer;
+}
+.cc-1 .camp-btn,.cc-2 .camp-btn,.cc-4 .camp-btn{
+  background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.18);
+}
+.cc-1 .camp-btn:hover,.cc-2 .camp-btn:hover,.cc-4 .camp-btn:hover{background:rgba(255,255,255,.18)}
+.cc-3 .camp-btn{background:var(--navy);color:#fff}
+.cc-3 .camp-btn:hover{background:var(--navy-2)}
+
+/* ─── STATS ─── */
+#stats{
+  background:var(--navy);
+  padding:clamp(4.5rem,7.5vw,7rem) clamp(1.25rem,4vw,3.5rem);
+  position:relative;overflow:hidden;
+}
+#stats::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.stats-orb{
+  position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(24,71,196,.28) 0%,transparent 65%);
+  pointer-events:none;
+}
+.stats-inner{max-width:1160px;margin:0 auto;position:relative}
+.stats-top{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  gap:2rem;flex-wrap:wrap;margin-bottom:3.25rem;
+}
+.stats-top h2{color:#fff}
+.stats-top p{font-size:14px;color:rgba(255,255,255,.45);max-width:280px;line-height:1.75}
+.stats-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:rgba(255,255,255,.07);
+  border-radius:var(--r-xl);overflow:hidden;
+}
+.sbox{
+  background:rgba(255,255,255,.03);padding:2rem 1.75rem;
+  transition:background .2s;
+}
+.sbox:hover{background:rgba(255,255,255,.07)}
+.snum{
+  font-family:'Instrument Serif',serif;
+  font-size:2.9rem;line-height:1;font-weight:400;margin-bottom:8px;
+}
+.snum sup{font-size:1.3rem;vertical-align:super;font-weight:300;margin-left:1px}
+.sn-1{color:#93C5FD}
+.sn-2{color:#6EE7B7}
+.sn-3{color:#FDE68A}
+.sn-4{color:#FCA5A5}
+.slabel{font-size:13px;color:rgba(255,255,255,.4);line-height:1.5}
+
+/* ─── WHY ─── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.why-blocks{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.why-block{
+  background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-lg);padding:1.5rem;
+  transition:transform .2s,box-shadow .2s;
+}
+.why-block:hover{transform:translateY(-2px);box-shadow:var(--s3)}
+.why-block:nth-child(3){grid-column:span 2}
+.why-block:nth-child(4){grid-column:span 2}
+.wb-ico{font-size:1.5rem;margin-bottom:.75rem;display:block}
+.why-block h4{font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:3px}
+.why-block p{font-size:13px;color:var(--gray-500);line-height:1.65}
+.why-list{list-style:none;margin-top:1.75rem;display:flex;flex-direction:column;gap:1.25rem}
+.wi{display:flex;gap:12px;align-items:flex-start}
+.wi-dot{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;
+}
+.wd-b{background:var(--blue-pale)}
+.wd-g{background:var(--green-pale)}
+.wd-a{background:var(--amber-pale)}
+.wi h5{font-size:14px;font-weight:600;color:var(--gray-800);margin-bottom:2px}
+.wi p{font-size:13px;color:var(--gray-500);line-height:1.65}
+
+/* ─── COLLAB ─── */
+.collab-wrap{
+  background:var(--navy);border-radius:var(--r-2xl);
+  padding:clamp(2.5rem,5vw,4.5rem) clamp(1.75rem,5vw,4.5rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:start;position:relative;overflow:hidden;
+}
+.collab-orb{
+  position:absolute;top:-80px;right:-80px;
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle,rgba(24,71,196,.25) 0%,transparent 65%);
+  pointer-events:none;
+}
+.collab-left{position:relative}
+.collab-left h2{color:#fff}
+.collab-left p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.75rem}
+.collab-badges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.75rem}
+.cbadge{
+  font-size:12px;font-weight:400;padding:5px 12px;
+  border-radius:var(--r-pill);
+  background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.6);
+  border:1px solid rgba(255,255,255,.1);
+}
+.collab-perks{display:flex;flex-direction:column;gap:10px}
+.cperk{display:flex;align-items:center;gap:10px}
+.cperk-chk{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:rgba(110,231,183,.12);border:1px solid rgba(110,231,183,.22);
+  display:flex;align-items:center;justify-content:center;
+}
+.cperk span{font-size:13px;color:rgba(255,255,255,.58)}
+.collab-form{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-xl);padding:1.75rem;
+}
+.collab-form h3{
+  font-family:'Instrument Serif',serif;
+  font-size:1.2rem;font-weight:400;color:#fff;margin-bottom:1.3rem;
+}
+.fg{margin-bottom:10px}
+.fg label{
+  display:block;font-size:11px;font-weight:600;
+  color:rgba(255,255,255,.4);margin-bottom:5px;
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:9px 13px;
+  font-family:'Geist',sans-serif;font-size:14px;color:#fff;
+  outline:none;transition:border-color .15s,background .15s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.25)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:rgba(147,197,253,.45);
+  background:rgba(255,255,255,.1);
+}
+.fg select{color:rgba(255,255,255,.7)}
+.fg select option{background:#0F2040;color:#fff}
+.fg textarea{min-height:72px;resize:vertical}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f-submit{
+  width:100%;background:var(--white);color:var(--navy);
+  font-family:'Geist',sans-serif;font-size:14px;font-weight:600;
+  padding:12px;border:none;border-radius:var(--r);
+  cursor:pointer;transition:all .15s;margin-top:4px;
+  letter-spacing:.01em;
+}
+.f-submit:hover{background:#EEF3FF;color:var(--blue)}
+
+/* ─── TESTIMONIALS ─── */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.75rem}
+.tcard{
+  background:var(--white);border:1px solid var(--gray-200);
+  border-radius:var(--r-xl);padding:1.6rem;
+  transition:transform .2s,box-shadow .2s;
+}
+.tcard:hover{transform:translateY(-3px);box-shadow:var(--s4);border-color:transparent}
+.tstars{color:#F59E0B;font-size:13px;letter-spacing:2px;margin-bottom:.9rem}
+.ttext{
+  font-size:14px;color:var(--gray-600);line-height:1.8;
+  font-style:italic;margin-bottom:1.25rem;
+}
+.tauthor{display:flex;align-items:center;gap:10px}
+.tav{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:600;color:#fff;flex-shrink:0;
+}
+.tv-1{background:var(--blue)}
+.tv-2{background:var(--green)}
+.tv-3{background:var(--amber)}
+.tname{font-size:13px;font-weight:600;color:var(--gray-800)}
+.trole{font-size:12px;color:var(--gray-400);margin-top:1px}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--navy);
+  padding:clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3.5rem) 2rem;
+}
+.foot-inner{max-width:1160px;margin:0 auto}
+.foot-top{
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:2.75rem;
+  padding-bottom:2.75rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.foot-logo{
+  font-family:'Instrument Serif',serif;
+  font-size:20px;color:#fff;
+  margin-bottom:.75rem;
+  display:flex;align-items:center;gap:9px;
+}
+.foot-logo-mark{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+}
+.foot-desc{font-size:13px;color:rgba(255,255,255,.35);line-height:1.75;max-width:250px;margin-bottom:1.5rem}
+.foot-soc{display:flex;gap:8px}
+.fsoc{
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,.4);text-decoration:none;
+  font-size:12px;font-weight:600;transition:all .15s;
+}
+.fsoc:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.foot-col h5{
+  font-size:11px;font-weight:600;color:rgba(255,255,255,.55);
+  margin-bottom:1rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-links a{
+  font-size:13px;color:rgba(255,255,255,.35);
+  text-decoration:none;transition:color .12s;
+}
+.foot-links a:hover{color:rgba(255,255,255,.8)}
+.foot-bot{
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1rem;
+}
+.foot-bot p{font-size:12px;color:rgba(255,255,255,.25)}
+.foot-bot-links{display:flex;gap:1.5rem}
+.foot-bot-links a{font-size:12px;color:rgba(255,255,255,.25);text-decoration:none;transition:color .12s}
+.foot-bot-links a:hover{color:rgba(255,255,255,.65)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-label{animation:fadeUp .4s ease both}
+.hero-hed{animation:fadeUp .4s .06s ease both}
+.hero-lead{animation:fadeUp .4s .12s ease both}
+.hero-btns{animation:fadeUp .4s .18s ease both}
+.hero-divider{animation:fadeUp .4s .24s ease both}
+.hero-stats{animation:fadeUp .4s .30s ease both}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:1fr}
+  .courses-grid{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:1fr;gap:3rem}
+  .collab-wrap{grid-template-columns:1fr;gap:2.5rem}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .camp-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-stats .hstat:last-child{grid-column:span 2;border-top:1px solid rgba(255,255,255,.08);border-right:none}
+  .why-blocks{grid-template-columns:1fr}
+  .why-block:nth-child(3),.why-block:nth-child(4){grid-column:auto}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-mob{display:block}
+  .courses-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr}
+  .hero-stats .hstat:last-child{grid-column:auto}
+  .hstat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .hstat:last-child{border-bottom:none}
+  .fg-row{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+}
+</style>
 </head>
 <body>
-    <h1>Hello IGSC</h1>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="1.4"/>
+          <path d="M5 9 Q9 5.5 13 9" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <path d="M5 9 Q9 12.5 13 9" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <line x1="9" y1="2.5" x2="9" y2="15.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      IGSC
+    </a>
+    <div class="nav-links">
+      <a href="courses.html">Courses</a>
+      <a href="services.html">Services</a>
+      <a href="campaigns.html">Campaigns</a>
+      <a href="collab.html">Collaborate</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="btn btn-outline btn-sm">Sign In</a>
+      <a href="courses.html" class="btn btn-navy btn-sm">Get Started <span class="ic">→</span></a>
+    </div>
+    <button class="nav-mob" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <line x1="3" y1="6" x2="17" y2="6" stroke="#4A5162" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="3" y1="10" x2="17" y2="10" stroke="#4A5162" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="3" y1="14" x2="17" y2="14" stroke="#4A5162" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
+  <div class="hero-inner">
+    <div class="hero-label">
+      <div class="hero-label-dot">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+          <path d="M5 1l.9 2.7H8.8L6.5 5.4l.9 2.7L5 6.4 2.6 8.1l.9-2.7L1.2 3.7H4.1z" fill="white"/>
+        </svg>
+      </div>
+      <span>Bangladesh's Premier Skills Institute</span>
+    </div>
+
+    <h1 class="hero-hed">
+      Educate. Empower.<br>
+      <em>Transform communities.</em>
+    </h1>
+
+    <p class="hero-lead">
+      IGSC delivers certified skill programs, health awareness campaigns, and institutional partnerships — purpose-built for students, teachers, and communities across Bangladesh.
+    </p>
+
+    <div class="hero-btns">
+      <a href="#courses" class="btn btn-lg" style="background:#fff;color:var(--navy);box-shadow:0 2px 16px rgba(255,255,255,.15)">
+        Explore Courses <span class="ic">→</span>
+      </a>
+      <a href="#collab" class="btn btn-lg btn-ghost">Partner With Us</a>
+    </div>
+
+    <div class="hero-divider">
+      <div class="hero-trust-item">
+        <div class="ht-icon">
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke="#6EE7B7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        Free to apply
+      </div>
+      <div class="hero-trust-item">
+        <div class="ht-icon">
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke="#6EE7B7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        Nationally certified
+      </div>
+      <div class="hero-trust-item">
+        <div class="ht-icon">
+          <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2.5" stroke="#6EE7B7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        Open to all institutions
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-n">3,200+</div>
+        <div class="hstat-l">Students enrolled across all programs</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">47</div>
+        <div class="hstat-l">Partner institutions nationwide</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-n">18</div>
+        <div class="hstat-l">Certified programs available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-item">🎓 Communication Skills</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🌍 Global Competency</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🩺 Health Awareness</div><div class="ticker-dot"></div>
+    <div class="ticker-item">💼 Career Readiness</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🤝 Institutional Collaboration</div><div class="ticker-dot"></div>
+    <div class="ticker-item">📊 Digital Literacy</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🧠 Critical Thinking</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🗣️ Public Speaking</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🎓 Communication Skills</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🌍 Global Competency</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🩺 Health Awareness</div><div class="ticker-dot"></div>
+    <div class="ticker-item">💼 Career Readiness</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🤝 Institutional Collaboration</div><div class="ticker-dot"></div>
+    <div class="ticker-item">📊 Digital Literacy</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🧠 Critical Thinking</div><div class="ticker-dot"></div>
+    <div class="ticker-item">🗣️ Public Speaking</div><div class="ticker-dot"></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow-blue">What We Offer</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.25rem">
+      <h2 class="h-section">Three pillars of <em class="serif text-blue">real change</em></h2>
+      <p style="font-size:13px;color:var(--gray-400);max-width:280px;line-height:1.75">Skill-building, health awareness, and institutional partnerships — under one roof.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card svc-blue">
+        <span class="svc-tag st-blue">Learn</span>
+        <div class="svc-icon si-blue">📚</div>
+        <h3>Skill-Based Courses</h3>
+        <p>Career-focused programs in communication, digital literacy, and leadership — certified and open to all learners.</p>
+        <a href="#courses" class="svc-link sl-blue">Browse courses <span>→</span></a>
+      </div>
+      <div class="svc-card svc-green">
+        <span class="svc-tag st-green">Participate</span>
+        <div class="svc-icon si-green">🩺</div>
+        <h3>Health Campaigns</h3>
+        <p>Community-wide programs covering mental health, hygiene, nutrition, and preventive care — open to all ages.</p>
+        <a href="#campaigns" class="svc-link sl-green">See campaigns <span>→</span></a>
+      </div>
+      <div class="svc-card svc-amber">
+        <span class="svc-tag st-amber">Partner</span>
+        <div class="svc-icon si-amber">🤝</div>
+        <h3>Institutional Collaboration</h3>
+        <p>Schools, colleges, and madrasahs can bring IGSC programs to their students — at no cost, with full support.</p>
+        <a href="#collab" class="svc-link sl-amber">Start a partnership <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head-row">
+      <div>
+        <div class="eyebrow eyebrow-blue">Featured Programs</div>
+        <h2 class="h-section">Courses built for <em class="serif text-blue">your future</em></h2>
+      </div>
+      <a href="#" class="btn btn-outline">View all courses <span class="ic">→</span></a>
+    </div>
+    <div class="courses-grid">
+      <div class="crs-card">
+        <div class="crs-thumb ct-1">🗣️</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-1">Communication</span><span class="crs-dur">6 weeks</span></div>
+          <h4>Professional Communication & Presentation</h4>
+          <p>Master verbal and written communication for academic and career settings.</p>
+          <div class="crs-foot"><span class="crs-aud">Students · Teachers</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+      <div class="crs-card">
+        <div class="crs-thumb ct-2">💻</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-2">Digital Skills</span><span class="crs-dur">8 weeks</span></div>
+          <h4>Digital Literacy & Workplace Tools</h4>
+          <p>Training in digital tools, online safety, and professional platforms.</p>
+          <div class="crs-foot"><span class="crs-aud">All students</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+      <div class="crs-card">
+        <div class="crs-thumb ct-3">🧠</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-3">Leadership</span><span class="crs-dur">4 weeks</span></div>
+          <h4>Youth Leadership & Critical Thinking</h4>
+          <p>Build decision-making, teamwork, and problem-solving capabilities.</p>
+          <div class="crs-foot"><span class="crs-aud">Ages 15–25</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+      <div class="crs-card">
+        <div class="crs-thumb ct-4">🌍</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-4">English</span><span class="crs-dur">10 weeks</span></div>
+          <h4>English for Global Communication</h4>
+          <p>Functional English for academic, professional, and international contexts.</p>
+          <div class="crs-foot"><span class="crs-aud">All learners</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+      <div class="crs-card">
+        <div class="crs-thumb ct-5">📊</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-5">Research</span><span class="crs-dur">5 weeks</span></div>
+          <h4>Research Methods for Students</h4>
+          <p>Design, conduct, and present research with clarity and confidence.</p>
+          <div class="crs-foot"><span class="crs-aud">University students</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+      <div class="crs-card">
+        <div class="crs-thumb ct-6">🧑‍🏫</div>
+        <div class="crs-body">
+          <div class="crs-meta"><span class="crs-badge cb-6">Teaching</span><span class="crs-dur">6 weeks</span></div>
+          <h4>Modern Pedagogy for Educators</h4>
+          <p>Active learning techniques and classroom innovation strategies for teachers.</p>
+          <div class="crs-foot"><span class="crs-aud">Teachers · Principals</span><a href="#" class="crs-apply">Apply →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGNS -->
+<section id="campaigns" class="section">
+  <div class="wrap">
+    <div class="eyebrow eyebrow-green">Health Campaigns</div>
+    <h2 class="h-section">Awareness that <em class="serif text-green">saves lives</em></h2>
+    <p class="lead" style="margin-top:.75rem">We run targeted health campaigns in schools, colleges, and communities. Join one near you or invite us to your institution.</p>
+    <div class="camp-grid">
+      <div class="camp-card cc-1">
+        <div class="camp-count">1,200+ participants</div>
+        <span class="camp-icon">🧠</span>
+        <div class="camp-eyebrow">Mental Health</div>
+        <h3>Mind Matters: Breaking the Stigma</h3>
+        <p>Workshops and counseling sessions helping students identify and manage mental health challenges in a safe environment.</p>
+        <a href="#" class="camp-btn">Join campaign →</a>
+      </div>
+      <div class="camp-card cc-2">
+        <div class="camp-count">3,500+ reached</div>
+        <span class="camp-icon">🤲</span>
+        <div class="camp-eyebrow">Hygiene & Sanitation</div>
+        <h3>Clean Hands, Healthy Communities</h3>
+        <p>School-based hygiene drives covering handwashing, sanitation practices, and disease prevention strategies.</p>
+        <a href="#" class="camp-btn">Join campaign →</a>
+      </div>
+      <div class="camp-card cc-3">
+        <div class="camp-count" style="color:var(--gray-400)">800+ families</div>
+        <span class="camp-icon">🥦</span>
+        <div class="camp-eyebrow">Nutrition</div>
+        <h3>Eat Right, Think Bright</h3>
+        <p>A nutrition awareness program helping students and families build lasting, healthier daily habits.</p>
+        <a href="#" class="camp-btn">Join campaign →</a>
+      </div>
+      <div class="camp-card cc-4">
+        <div class="camp-count">600+ screened</div>
+        <span class="camp-icon">💊</span>
+        <div class="camp-eyebrow">Preventive Care</div>
+        <h3>Know Before It Happens</h3>
+        <p>Free screenings, health talks, and guides on early detection and preventive health practices.</p>
+        <a href="#" class="camp-btn">Join campaign →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-orb"></div>
+  <div class="stats-inner">
+    <div class="stats-top">
+      <h2 class="h-section">Impact that speaks <em class="serif" style="color:#93C5FD">for itself</em></h2>
+      <p>Real results from real communities across Bangladesh.</p>
+    </div>
+    <div class="stats-row">
+      <div class="sbox">
+        <div class="snum sn-1">3,200<sup>+</sup></div>
+        <div class="slabel">Students enrolled across all programs</div>
+      </div>
+      <div class="sbox">
+        <div class="snum sn-2">47</div>
+        <div class="slabel">Institutional partners — schools, colleges & madrasahs</div>
+      </div>
+      <div class="sbox">
+        <div class="snum sn-3">6,000<sup>+</sup></div>
+        <div class="slabel">Community members reached through health campaigns</div>
+      </div>
+      <div class="sbox">
+        <div class="snum sn-4">18</div>
+        <div class="slabel">Certified programs currently available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="section section-alt">
+  <div class="wrap">
+    <div class="why-grid">
+      <div class="why-blocks">
+        <div class="why-block">
+          <span class="wb-ico">🎯</span>
+          <h4>Outcome-Focused</h4>
+          <p>Every program is built around measurable, real-world results — not theory.</p>
+        </div>
+        <div class="why-block">
+          <span class="wb-ico">🌱</span>
+          <h4>Community-Rooted</h4>
+          <p>Designed for Bangladesh's students, families, and institutions from day one.</p>
+        </div>
+        <div class="why-block">
+          <span class="wb-ico">🏅</span>
+          <h4>Certified & Recognized</h4>
+          <p>Credentials accepted by employers and universities locally and internationally.</p>
+        </div>
+        <div class="why-block">
+          <span class="wb-ico">💙</span>
+          <h4>Always Accessible</h4>
+          <p>Free and low-cost programs that remove financial barriers to quality education.</p>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow eyebrow-blue">Why IGSC</div>
+        <h2 class="h-section">Built for students who <em class="serif text-blue">mean it</em></h2>
+        <p class="lead">Every program is co-designed with educators and field experts — purpose-built for real outcomes in Bangladesh and beyond.</p>
+        <ul class="why-list">
+          <li class="wi">
+            <div class="wi-dot wd-b">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#1847C4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h5>No prerequisites</h5>
+              <p>Open to all motivated learners regardless of background or education level.</p>
+            </div>
+          </li>
+          <li class="wi">
+            <div class="wi-dot wd-g">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#0B7B5A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h5>Expert facilitators</h5>
+              <p>Courses led by experienced professionals from education, healthcare, and industry.</p>
+            </div>
+          </li>
+          <li class="wi">
+            <div class="wi-dot wd-a">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#C47A0A" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h5>Flexible delivery</h5>
+              <p>In-person, hybrid, or on-site at your institution — we come to you.</p>
+            </div>
+          </li>
+        </ul>
+        <div style="margin-top:2rem">
+          <a href="#courses" class="btn btn-blue">Start learning <span class="ic">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLAB -->
+<section id="collab" class="section">
+  <div class="wrap">
+    <div class="collab-wrap">
+      <div class="collab-orb"></div>
+      <div class="collab-left">
+        <div class="eyebrow eyebrow-white" style="margin-bottom:1.1rem">For Institutions</div>
+        <h2 class="h-section" style="color:#fff;margin-bottom:.85rem">Bring IGSC to your <em class="serif" style="color:#93C5FD">institution</em></h2>
+        <p>Partner with us to deliver certified courses and health campaigns directly to your students — at no cost to your school, college, or madrasah.</p>
+        <div class="collab-badges">
+          <span class="cbadge">🏫 Schools</span>
+          <span class="cbadge">🎓 Colleges</span>
+          <span class="cbadge">🕌 Madrasahs</span>
+          <span class="cbadge">🏢 NGOs</span>
+          <span class="cbadge">🏛️ Universities</span>
+        </div>
+        <div class="collab-perks">
+          <div class="cperk">
+            <div class="cperk-chk">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#6EE7B7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Free program delivery at your campus</span>
+          </div>
+          <div class="cperk">
+            <div class="cperk-chk">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#6EE7B7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Flexible scheduling tailored to your calendar</span>
+          </div>
+          <div class="cperk">
+            <div class="cperk-chk">
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="#6EE7B7" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <span>Joint certification for your students</span>
+          </div>
+        </div>
+      </div>
+      <div class="collab-form">
+        <h3>Request a Collaboration</h3>
+        <div class="fg-row">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="Dr. Ahmed Rahman"></div>
+          <div class="fg"><label>Role</label><input type="text" placeholder="Principal / Teacher"></div>
+        </div>
+        <div class="fg"><label>Institution Name</label><input type="text" placeholder="Comilla Government College"></div>
+        <div class="fg">
+          <label>Institution Type</label>
+          <select>
+            <option value="">Select type</option>
+            <option>School</option><option>College</option>
+            <option>Madrasah</option><option>University</option>
+            <option>NGO</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Phone / Email</label><input type="text" placeholder="+880 1700-000000 or email@example.com"></div>
+        <div class="fg"><label>Message (optional)</label><textarea placeholder="Tell us about your institution and what you need..."></textarea></div>
+        <button class="f-submit">Send Collaboration Request →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section section-alt">
+  <div class="wrap">
+    <div class="eyebrow eyebrow-blue">Testimonials</div>
+    <h2 class="h-section">What our community <em class="serif text-blue">says</em></h2>
+    <div class="testi-grid">
+      <div class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="ttext">"The communication course transformed how I present myself in interviews. I secured placement within two months of completing it."</p>
+        <div class="tauthor">
+          <div class="tav tv-1">FA</div>
+          <div><div class="tname">Fatima Akter</div><div class="trole">Student, Comilla Victoria College</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="ttext">"We partnered with IGSC for a health campaign and the response from our students was remarkable. I'd recommend them to any institution."</p>
+        <div class="tauthor">
+          <div class="tav tv-2">MH</div>
+          <div><div class="tname">Md. Hossain</div><div class="trole">Principal, Al-Amin Madrasah</div></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="tstars">★★★★★</div>
+        <p class="ttext">"The digital literacy program gave our students tools they use every single day. The content was perfectly tailored to our community's needs."</p>
+        <div class="tauthor">
+          <div class="tav tv-3">RB</div>
+          <div><div class="tname">Rina Begum</div><div class="trole">Teacher, Chandpur High School</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">
+          <div class="foot-logo-mark">
+            <svg viewBox="0 0 18 18" fill="none" width="15" height="15">
+              <circle cx="9" cy="9" r="6.5" stroke="white" stroke-width="1.4"/>
+              <path d="M5 9 Q9 5.5 13 9" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+              <path d="M5 9 Q9 12.5 13 9" stroke="white" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+              <line x1="9" y1="2.5" x2="9" y2="15.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          IGSC
+        </div>
+        <p class="foot-desc">Institute of Global Skills and Communication — empowering students, teachers, and institutions across Bangladesh.</p>
+        <div class="foot-soc">
+          <a href="#" class="fsoc">f</a>
+          <a href="#" class="fsoc">in</a>
+          <a href="#" class="fsoc">yt</a>
+          <a href="#" class="fsoc">@</a>
+        </div>
+      </div>
+      <div>
+        <h5>Programs</h5>
+        <ul class="foot-links">
+          <li><a href="#">All courses</a></li>
+          <li><a href="#">Communication</a></li>
+          <li><a href="#">Digital Skills</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">For Educators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Campaigns</h5>
+        <ul class="foot-links">
+          <li><a href="#">Mental Health</a></li>
+          <li><a href="#">Hygiene</a></li>
+          <li><a href="#">Nutrition</a></li>
+          <li><a href="#">Preventive Care</a></li>
+          <li><a href="#">Host a Campaign</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Organization</h5>
+        <ul class="foot-links">
+          <li><a href="#">About IGSC</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Partners</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Collaborate</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p>© 2025 IGSC — Institute of Global Skills and Communication. All rights reserved.</p>
+      <div class="foot-bot-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
