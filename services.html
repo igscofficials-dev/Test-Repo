@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGSC Services</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+body{background:#0B1F3A;color:#fff;}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:70px 20px;
+  background:linear-gradient(135deg,#0B1F3A,#1e3a8a);
+}
+.hero h1{font-size:40px;}
+.hero p{opacity:.8;margin-top:10px;}
+
+/* CONTAINER */
+.container{max-width:1200px;margin:auto;padding:30px;}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:16px;
+  transition:.3s;
+}
+.card:hover{transform:translateY(-5px);}
+.card img{width:100%;border-radius:10px;margin-bottom:10px;}
+
+.btn{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#D4AF37;
+  color:#000;
+  cursor:pointer;
+  width:100%;
+}
+
+/* DETAILS */
+.details{
+  display:none;
+  background:#fff;
+  color:#000;
+  padding:30px;
+  border-radius:16px;
+}
+.back{
+  cursor:pointer;
+  margin-bottom:15px;
+  color:#2563eb;
+}
+
+/* PACKAGES */
+.packages{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  margin-top:20px;
+}
+.package{
+  background:#f1f5f9;
+  padding:15px;
+  border-radius:10px;
+}
+.package h4{margin-bottom:5px;}
+.package ul{margin-left:15px;}
+.price{
+  font-weight:bold;
+  margin-top:10px;
+  color:#0B1F3A;
+}
+
+/* REVIEWS */
+.review{
+  background:#f1f5f9;
+  padding:10px;
+  border-radius:8px;
+  margin-top:10px;
+}
+
+/* COMMENT */
+.comment-box textarea{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+}
+.comment-box button{
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  background:#0B1F3A;
+  color:#fff;
+}
+
+/* PORTFOLIO */
+.portfolio{margin-top:40px;}
+.portfolio img{width:100%;border-radius:10px;}
+
+/* STATS */
+.stats{
+  margin-top:40px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+.stat{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  text-align:center;
+  border-radius:10px;
+}
+.stat h2{color:#D4AF37;}
+
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+  background:#020617;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h1>Our Services</h1>
+  <p>We deliver first. You pay after satisfaction.</p>
+</section>
+
+<div class="container">
+
+  <!-- SERVICE GRID -->
+  <div class="grid" id="serviceGrid"></div>
+
+  <!-- DETAILS -->
+  <div class="details" id="details">
+    <div class="back" onclick="goBack()">← Back</div>
+
+    <h2 id="title"></h2>
+    <p id="desc"></p>
+
+    <h3>Packages</h3>
+    <div class="packages" id="packages"></div>
+
+    <button class="btn">Book Service</button>
+
+    <h3 style="margin-top:20px;">Reviews</h3>
+    <div id="reviews"></div>
+
+    <div class="comment-box">
+      <h3>Leave Comment</h3>
+      <textarea id="commentInput"></textarea>
+      <button onclick="addComment()">Submit</button>
+      <div id="comments"></div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div class="portfolio">
+    <h2>Our Work</h2>
+    <div class="grid">
+      <img src="https://picsum.photos/300/200">
+      <img src="https://picsum.photos/301/200">
+      <img src="https://picsum.photos/302/200">
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><h2>150+</h2><p>Projects</p></div>
+    <div class="stat"><h2>100+</h2><p>Clients</p></div>
+    <div class="stat"><h2>5+</h2><p>Years Experience</p></div>
+  </div>
+
+</div>
+
+<footer>© 2026 IGSC</footer>
+
+<script>
+
+const services=[
+{
+ name:"Video Editing",
+ desc:"Professional video editing for social media.",
+ packages:[
+  {name:"Basic",items:["2 videos (20 min)","2 revisions"],price:"1000 BDT"},
+  {name:"Standard",items:["5 videos (50 min)","10 revisions"],price:"2000 BDT"},
+  {name:"Premium",items:["10 videos","Unlimited revisions"],price:"4000 BDT"}
+ ],
+ reviews:["Amazing work","Very professional"]
+},
+{
+ name:"Web Development",
+ desc:"Modern responsive websites.",
+ packages:[
+  {name:"Basic",items:["1 page site","Basic design"],price:"3000 BDT"},
+  {name:"Standard",items:["5 pages","Responsive"],price:"7000 BDT"},
+  {name:"Premium",items:["Full website","Admin panel"],price:"15000 BDT"}
+ ],
+ reviews:["Great website","Fast delivery"]
+}
+];
+
+function render(){
+ let html="";
+ services.forEach((s,i)=>{
+  html+=`
+  <div class="card">
+    <img src="https://picsum.photos/400/25${i}">
+    <h3>${s.name}</h3>
+    <p>${s.desc}</p>
+    <button class="btn" onclick="openDetails(${i})">View Details</button>
+  </div>`;
+ });
+ document.getElementById("serviceGrid").innerHTML=html;
+}
+
+function openDetails(i){
+ const s=services[i];
+ document.getElementById("serviceGrid").style.display="none";
+ document.getElementById("details").style.display="block";
+
+ document.getElementById("title").innerText=s.name;
+ document.getElementById("desc").innerText=s.desc;
+
+ let pkg="";
+ s.packages.forEach(p=>{
+  pkg+=`
+  <div class="package">
+    <h4>${p.name}</h4>
+    <ul>${p.items.map(x=>`<li>${x}</li>`).join("")}</ul>
+    <div class="price">${p.price}</div>
+  </div>`;
+ });
+ document.getElementById("packages").innerHTML=pkg;
+
+ let rev="";
+ s.reviews.forEach(r=>rev+=`<div class="review">${r}</div>`);
+ document.getElementById("reviews").innerHTML=rev;
+}
+
+function goBack(){
+ document.getElementById("details").style.display="none";
+ document.getElementById("serviceGrid").style.display="grid";
+}
+
+function addComment(){
+ const val=document.getElementById("commentInput").value;
+ if(!val)return;
+ document.getElementById("comments").innerHTML+=`<div class="review">${val}</div>`;
+ document.getElementById("commentInput").value="";
+}
+
+render();
+
+</script>
+
+</body>
+</html>
